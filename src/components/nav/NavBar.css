@@ -1,0 +1,59 @@
+small {
+  font-size: 75%;
+}
+
+header {
+  background-color: rgb(5, 122, 148);
+  border: rgb(204, 240, 250) solid 3px;
+}
+
+header .site-title {
+  max-height: 50px;
+  max-width: 50px;
+  display: inline;
+  margin-left: 172px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.site-title {
+  color: rgb(232, 252, 255);
+  text-align: center;
+}
+
+nav .container {
+  display: flex;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+header img {
+  max-height: 100px;
+  max-width: 100px;
+  text-align: left;
+  padding: 2px;
+  display: inline;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+nav .container li {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  color: cornsilk;
+  box-sizing: border-box;
+  background-color: rgb(69, 172, 190);
+  list-style-type: none;
+}
+
+.nav-link {
+  color: rgb(204, 240, 250);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: rgb(11, 95, 109);
+}

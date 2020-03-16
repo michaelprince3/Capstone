@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.buttonBox {
+  display: inline-block;
+
+}
+ 
+.button {
+  border: solid 4px goldenrod;
+  background-color: #282c34;
+  color: goldenrod;
+  height: 200px;
+  width: 400px;
+  margin-bottom: 100px;
+  margin: 10px;
+  font-size: xx-large;
+}
+
+.button:hover {
+  background-color: black;
+}

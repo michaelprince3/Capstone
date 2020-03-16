@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "one",
+      "email": "one@one.com"
+    },
+    {
+      "userName": "mike",
+      "email": "mike@prince.com",
+      "id": 2
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "project",
+      "description": "An interesting project.",
+      "isActive": false,
+      "isComplete": false,
+      "img": "url"
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "projectId": 1,
+      "name": "step 1",
+      "description": "A new Step",
+      "isComplete": false,
+      "img": "url"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "stepId": 1,
+      "name": "First Task",
+      "descrition": "A new task",
+      "isComplete": false,
+      "img": "url"
+    }
+  ],
+  "collaborations": [
+    {
+      "id": 1,
+      "userId": 1,
+      "projectId": 1
+    }
+  ]
+}
