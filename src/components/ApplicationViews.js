@@ -3,6 +3,8 @@ import React from "react"
 import Home from "./home/Home"
 import Login from "./auth/Login"
 import ProjectCard from "./activeProject/ProjectCard"
+import ProjectList from "./activeProject/ProjectList"
+import ProjectForm from "./activeProject/ProjectForm"
 
 const ApplicationViews = props => {
     const setUser = props.setUser;
@@ -27,8 +29,15 @@ const ApplicationViews = props => {
         exact
         path="/active"
         render={props => {
-            return <ProjectCard />
+            return <ProjectList {...props} />
         }} 
+        />
+        <Route
+        exact
+        path="/projects/new"
+        render={props => {
+            return <ProjectForm {...props} />
+        }}
         />
         </>
     )

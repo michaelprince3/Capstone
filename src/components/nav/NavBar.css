@@ -3,8 +3,8 @@ small {
 }
 
 header {
-  background-color: rgb(5, 122, 148);
-  border: rgb(204, 240, 250) solid 3px;
+  background-color: black;
+  border: black solid 3px;
 }
 
 header .site-title {
@@ -49,11 +49,11 @@ nav .container li {
 }
 
 .nav-link {
-  color: rgb(204, 240, 250);
+  color: grey;
   text-decoration: underline;
   cursor: pointer;
 }
 
 .nav-link:hover {
-  color: rgb(11, 95, 109);
+  color: black;
 }
