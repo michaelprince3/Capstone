@@ -25,7 +25,7 @@
       "userId": 2,
       "name": "Another Project",
       "description": "This is the best project",
-      "isActive": false,
+      "isActive": true,
       "isComplete": false,
       "img": "url",
       "id": 2
@@ -34,8 +34,8 @@
       "userId": 2,
       "name": "One More Project",
       "description": "Interesting text",
-      "isActive": false,
-      "isComplete": false,
+      "isActive": true,
+      "isComplete": true,
       "img": "url",
       "id": 3
     }

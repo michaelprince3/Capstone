@@ -1,46 +1,60 @@
-import { Route, Redirect } from "react-router-dom"
-import React from "react"
-import Home from "./home/Home"
-import Login from "./auth/Login"
-import ProjectCard from "./activeProject/ProjectCard"
-import ProjectList from "./activeProject/ProjectList"
-import ProjectForm from "./activeProject/ProjectForm"
+import { Route, Redirect } from "react-router-dom";
+import React from "react";
+import Home from "./home/Home";
+import Login from "./auth/Login";
+import ProjectCard from "./activeProject/ProjectCard";
+import ProjectList from "./activeProject/ProjectList";
+import ProjectForm from "./activeProject/ProjectForm";
 
 const ApplicationViews = props => {
-    const setUser = props.setUser;
-    const hasUser = props.hasUser;
+  const setUser = props.setUser;
+  const hasUser = props.hasUser;
 
-    return (
-        <>
-        <Route
+  return (
+    <>
+      <Route
         path="/login"
         render={props => {
-            return <Login setUser={setUser} {...props} />
+          return <Login setUser={setUser} {...props} />;
         }}
-        />
-        <Route
+      />
+      <Route
         exact
         path="/"
         render={props => {
-            return <Home />
+          return <Home />;
         }}
-        />
-        <Route
+      />
+      <Route
+        exact
+        path="/future"
+        render={props => {
+          return <ProjectList {...props} />;
+        }}
+      />
+      <Route
         exact
         path="/active"
         render={props => {
-            return <ProjectList {...props} />
-        }} 
-        />
-        <Route
+          return <ProjectList {...props} />;
+        }}
+      />
+       <Route
+        exact
+        path="/complete"
+        render={props => {
+          return <ProjectList {...props} />;
+        }}
+      />
+      <Route
         exact
         path="/projects/new"
         render={props => {
-            return <ProjectForm {...props} />
+          return <ProjectForm {...props} />;
         }}
-        />
-        </>
-    )
-}
+      />
+    </>
+  );
+};
 
-export default ApplicationViews
+export default ApplicationViews;
