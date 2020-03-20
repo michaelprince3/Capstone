@@ -50,29 +50,37 @@
       "img": "url"
     },
     {
-        "id": 4,
-        "projectId": 1,
-        "name": "step 2",
-        "description": "Another Step",
-        "isComplete": false,
-        "img": "url"
-      },
+      "id": 4,
+      "projectId": 1,
+      "name": "step 2",
+      "description": "Another Step",
+      "isComplete": false,
+      "img": "url"
+    },
     {
-        "id": 2,
-        "projectId": 2,
-        "name": "step 1",
-        "description": "A new Step",
-        "isComplete": false,
-        "img": "url"
-      },
-      {
-        "id": 3,
-        "projectId": 3,
-        "name": "step 1",
-        "description": "A new Step",
-        "isComplete": false,
-        "img": "url"
-      }
+      "id": 2,
+      "projectId": 2,
+      "name": "step 1",
+      "description": "A new Step",
+      "isComplete": false,
+      "img": "url"
+    },
+    {
+      "id": 3,
+      "projectId": 3,
+      "name": "step 1",
+      "description": "A new Step",
+      "isComplete": false,
+      "img": "url"
+    },
+    {
+      "projectId": 1,
+      "name": "something",
+      "description": "This is the best step",
+      "isComplete": false,
+      "img": "url",
+      "id": 5
+    }
   ],
   "tasks": [
     {

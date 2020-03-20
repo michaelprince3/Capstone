@@ -8,13 +8,12 @@ const StepListItem = props => {
   };
 
   return (
-    <div className="projectStep" onClick={openTasks}>
+    <div className="projectStep" onClick={openTasks(props.step.id)}>
       <div className="projectStepContent">
         <h3>
-          <span className="projectStepTitle">{props.step.name}</span>
+          <span className="projectStepTitle" onClick={props.showTasks}>{props.step.name}</span>
         </h3>
         <p>{props.step.description}</p>
-        <p>A pretty image</p>
         <button>Edit</button>
         <button>Delete</button>
       </div>
