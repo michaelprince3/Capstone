@@ -5,7 +5,7 @@ const ProjectCard = props => {
   //   if (props.task.isComplete === false) {
 
   const openCard = () => {
-    alert("This should open the detail");
+    props.history.push(`/projects/${props.project.id}`);
   };
   return (
     <div className="projectCard" onClick={openCard}>
@@ -14,7 +14,7 @@ const ProjectCard = props => {
           <span className="projectCardTitle">{props.project.name}</span>
         </h3>
         <p>{props.project.description}</p>
-        <p>Complete By: {}</p>
+        <p>A pretty image</p>
       </div>
     </div>
   );

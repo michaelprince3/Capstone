@@ -1,0 +1,9 @@
+.detailCardContainer {
+    display: flex;
+}
+.detailCards {
+    border: solid black 5px;
+    width: 30%;
+    height: 400px;
+    margin: 1em;
+}

@@ -5,6 +5,7 @@ import Login from "./auth/Login";
 import ProjectCard from "./activeProject/ProjectCard";
 import ProjectList from "./activeProject/ProjectList";
 import ProjectForm from "./activeProject/ProjectForm";
+import ProjectDetail from "./activeProject/ProjectDetail";
 
 const ApplicationViews = props => {
   const setUser = props.setUser;
@@ -51,6 +52,25 @@ const ApplicationViews = props => {
         path="/projects/new"
         render={props => {
           return <ProjectForm {...props} />;
+        }}
+      />
+      <Route
+      exact
+      path="/projects/detail"
+      render={props => {
+          return <ProjectDetail {...props} />;
+      }}
+      />
+      <Route
+        exact
+        path="/projects/:projectId(\d+)"
+        render={props => {
+          return hasUser
+            ? <ProjectDetail
+                projectId={parseInt(props.match.params.projectId)}
+                {...props}
+              />
+            : <Redirect to="/login" />;
         }}
       />
     </>
