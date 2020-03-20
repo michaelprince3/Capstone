@@ -3,7 +3,9 @@ import ProjectManager from "../../modules/ProjectManager";
 import "./ProjectDetail.css";
 import StepListItem from "../steps/StepListItem";
 import StepNewForm from "../steps/StepNewForm";
+import TaskListItem from "../Tasks/TaskListItem";
 import StepManager from "../../modules/StepManager";
+import TaskNewForm from "../Tasks/TaskNewForm";
 
 const ProjectDetail = props => {
   const [project, setProject] = useState({ name: "", description: "" });
@@ -22,23 +24,35 @@ const ProjectDetail = props => {
   const showTasks = id => {
     setRenderTasks(true);
     setStepId(id);
+    getTasks(id);
   };
 
-  useEffect(() => {
+  const updateTasks = updatedTasks => {
+    setTasks([]);
+    setTasks(updatedTasks);
+  };
+
+  const getProjectInfo = () => {
     ProjectManager.getWithSteps(projectId).then(proj => {
       setSteps(proj.steps);
       setProject({
         name: proj.name,
         description: proj.description
       });
-
       setIsLoading(false);
     });
-  }, [props.projectId]);
+  };
 
-  // StepManager.getWithTasks(stepId).then(step => {
-  //   setTasks(step.tasks);
-  // });
+  const getTasks = stepId => {
+      setTasks([])
+    StepManager.getWithTasks(stepId).then(data => {
+      setTasks(data.tasks);
+    });
+  };
+  useEffect(() => {
+    getProjectInfo();
+  }, []);
+
   return (
     <>
       <div className="detailCardContainer">
@@ -77,7 +91,17 @@ const ProjectDetail = props => {
         </div>
         <div className="detailCards">
           {renderTasks ? (
-            <StepListItem key={stepId} tasks={tasks} {...props} />
+            <div className="taskList">
+              {tasks.map(task => (
+                <TaskListItem key={stepId} task={task} {...props} />
+              ))}
+              <TaskNewForm
+                key={stepId}
+                stepId={stepId}
+                updateTasks={updateTasks}
+                {...props}
+              />
+            </div>
           ) : null}
         </div>
       </div>
