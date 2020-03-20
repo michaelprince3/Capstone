@@ -5,36 +5,28 @@ import ProjectCard from "./ProjectCard";
 const ProjectList = props => {
   const [projects, setProjects] = useState([]);
 
-  
-
   const getProjects = () => {
-    
-    return ProjectManager.getAll()
-      .then(projects => {
-        let filteredProjects = [];
-        if (props.location.pathname === "/future") {
-          filteredProjects = projects.filter(
-            project => project.isActive === false,
-            
-          );
-          setProjects(filteredProjects)
-          console.log("future");
-        } else if (props.location.pathname === "/active") {
-          filteredProjects = projects.filter(
-            project => project.isActive === true && project.isComplete === false
-          );
-          setProjects(filteredProjects)
-          console.log("active");
-        } else {
-          filteredProjects = projects.filter(
-            project => project.isComplete === true
-          );
-          setProjects(filteredProjects)
-        }
-      })
-    //   .then(filteredProjects => {
-    //     setProjects(filteredProjects);
-    //   });
+    return ProjectManager.getAll().then(projects => {
+      let filteredProjects = [];
+      if (props.location.pathname === "/future") {
+        filteredProjects = projects.filter(
+          project => project.isActive === false
+        );
+        setProjects(filteredProjects);
+        console.log("future");
+      } else if (props.location.pathname === "/active") {
+        filteredProjects = projects.filter(
+          project => project.isActive === true && project.isComplete === false
+        );
+        setProjects(filteredProjects);
+        console.log("active");
+      } else {
+        filteredProjects = projects.filter(
+          project => project.isComplete === true
+        );
+        setProjects(filteredProjects);
+      }
+    });
   };
 
   useEffect(() => {
