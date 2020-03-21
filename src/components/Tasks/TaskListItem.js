@@ -2,7 +2,6 @@ import React from "react";
 // import "./project.css";
 
 const TaskListItem = props => {
-    
   return (
     <div className="projectTask">
       <div className="projectTaskContent">
@@ -11,7 +10,9 @@ const TaskListItem = props => {
         </h3>
         <p>{props.task.description}</p>
         <button>Edit</button>
-        <button>Delete</button>
+        <button type="button" onClick={() => props.deleteTask(props.task.id)}>
+          Delete
+        </button>
       </div>
     </div>
   );

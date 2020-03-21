@@ -12,7 +12,9 @@ const StepListItem = props => {
         <p>{props.step.description}</p>
         <button>Add Task</button>
         <button>Edit</button>
-        <button>Delete</button>
+        <button
+        type="button"
+        onClick={() => props.deleteStep(props.step.id)}>Delete</button>
       </div>
     </div>
   );

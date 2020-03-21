@@ -6,6 +6,8 @@ import StepNewForm from "../steps/StepNewForm";
 import TaskListItem from "../Tasks/TaskListItem";
 import StepManager from "../../modules/StepManager";
 import TaskNewForm from "../Tasks/TaskNewForm";
+import TaskManager from "../../modules/TaskManager";
+import ProjectEdit from "./ProjectEdit";
 
 const ProjectDetail = props => {
   const [project, setProject] = useState({ name: "", description: "" });
@@ -32,6 +34,11 @@ const ProjectDetail = props => {
     setTasks(updatedTasks);
   };
 
+  const updateProjectState = (project) => {
+    setProject(project)
+
+  }
+
   const getProjectInfo = () => {
     ProjectManager.getWithSteps(projectId).then(proj => {
       setSteps(proj.steps);
@@ -43,8 +50,24 @@ const ProjectDetail = props => {
     });
   };
 
+  const deleteProject = id => {
+    ProjectManager.delete(id).then(() => props.history.push("/active"));
+  };
+
+  const deleteStep = id => {
+    StepManager.delete(id).then(() =>
+      ProjectManager.getWithSteps(projectId).then(data => setSteps(data.steps))
+    );
+  };
+
+  const deleteTask = id => {
+    TaskManager.delete(id).then(() =>
+      TaskManager.getWithTasks(stepId).then(data => setTasks(data.tasks))
+    );
+  };
+
   const getTasks = stepId => {
-      setTasks([])
+    setTasks([]);
     StepManager.getWithTasks(stepId).then(data => {
       setTasks(data.tasks);
     });
@@ -57,6 +80,7 @@ const ProjectDetail = props => {
     <>
       <div className="detailCardContainer">
         <div className="detailCards">
+          <div className="ProjectDetails">
           <h3>
             Name: <span>{project.name}</span>
           </h3>
@@ -64,22 +88,27 @@ const ProjectDetail = props => {
           <button type="button" className="btn">
             Edit
           </button>
-          <button type="button" className="btn">
+          <button type="button" className="btn" onClick={() => deleteProject(projectId)}>
             Delete
           </button>
+          </div>
+          <div className="projectEdit">
+            <ProjectEdit updateProjectState={updateProjectState} {...props}/>
+          </div>
         </div>
         <div className="detailCards">
           {isNewForm ? (
             <div className="stepForm">
-              <StepNewForm {...props} />;
+              <StepNewForm {...props} />
             </div>
           ) : (
             <div className="stepList">
               {steps.map(step => (
                 <StepListItem
-                  key={project.id}
+                  key={step.id}
                   step={step}
                   showTasks={showTasks}
+                  deleteStep={deleteStep}
                   {...props}
                 />
               ))}
@@ -93,7 +122,12 @@ const ProjectDetail = props => {
           {renderTasks ? (
             <div className="taskList">
               {tasks.map(task => (
-                <TaskListItem key={stepId} task={task} {...props} />
+                <TaskListItem
+                  key={task.id}
+                  task={task}
+                  deleteTask={deleteTask}
+                  {...props}
+                />
               ))}
               <TaskNewForm
                 key={stepId}
