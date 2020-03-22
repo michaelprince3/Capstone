@@ -8,6 +8,7 @@ import StepManager from "../../modules/StepManager";
 import TaskNewForm from "../Tasks/TaskNewForm";
 import TaskManager from "../../modules/TaskManager";
 import ProjectEdit from "./ProjectEdit";
+import StepEditForm from "../steps/StepEditForm";
 
 const ProjectDetail = props => {
   const [project, setProject] = useState({ name: "", description: "" });
@@ -17,10 +18,16 @@ const ProjectDetail = props => {
   const [tasks, setTasks] = useState([]);
   const [renderTasks, setRenderTasks] = useState(false);
   const [stepId, setStepId] = useState();
+  const [isStepEdit, setIsStepEdit] = useState(false);
   const projectId = props.projectId;
 
   const newStep = () => {
     setIsNewForm(true);
+  };
+
+  const stepEdit = id => {
+    setStepId(id);
+    setIsStepEdit(true);
   };
 
   const showTasks = id => {
@@ -34,10 +41,14 @@ const ProjectDetail = props => {
     setTasks(updatedTasks);
   };
 
-  const updateProjectState = (project) => {
-    setProject(project)
+  const updateProjectState = project => {
+    setProject(project);
+  };
 
-  }
+  const updateStepState = step => {
+    setSteps(step);
+    setIsStepEdit(false)
+  };
 
   const getProjectInfo = () => {
     ProjectManager.getWithSteps(projectId).then(proj => {
@@ -81,23 +92,29 @@ const ProjectDetail = props => {
       <div className="detailCardContainer">
         <div className="detailCards">
           <div className="ProjectDetails">
-          <h3>
-            Name: <span>{project.name}</span>
-          </h3>
-          <p>{project.description}</p>
-          <button type="button" className="btn">
-            Edit
-          </button>
-          <button type="button" className="btn" onClick={() => deleteProject(projectId)}>
-            Delete
-          </button>
+            <h3>
+              Name: <span>{project.name}</span>
+            </h3>
+            <p>{project.description}</p>
+            <button type="button" className="btn">
+              Edit
+            </button>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => deleteProject(projectId)}
+            >
+              Delete
+            </button>
           </div>
           <div className="projectEdit">
-            <ProjectEdit updateProjectState={updateProjectState} {...props}/>
+            <ProjectEdit updateProjectState={updateProjectState} {...props} />
           </div>
         </div>
         <div className="detailCards">
-          {isNewForm ? (
+          {isStepEdit ? (
+            <StepEditForm updateStepState={updateStepState} stepId={stepId} {...props} />
+          ) : isNewForm ? (
             <div className="stepForm">
               <StepNewForm {...props} />
             </div>
@@ -109,6 +126,7 @@ const ProjectDetail = props => {
                   step={step}
                   showTasks={showTasks}
                   deleteStep={deleteStep}
+                  stepEdit={stepEdit}
                   {...props}
                 />
               ))}

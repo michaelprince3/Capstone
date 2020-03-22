@@ -2,6 +2,10 @@ const remoteURL = "http://localhost:5002";
 
 export default {
 
+  get(id) {
+    return fetch(`${remoteURL}/steps/${id}`).then(results => results.json())
+  }, 
+
     getWithTasks(stepId) {
         return fetch(`${remoteURL}/steps/${stepId}?_embed=tasks`).then(results => results.json())
     },
