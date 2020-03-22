@@ -22,13 +22,13 @@
       "img": "url"
     },
     {
+      "id": 2,
       "userId": 2,
-      "name": "Another Project",
+      "name": "Another Project 2",
       "description": "This is the best project",
       "isActive": true,
       "isComplete": false,
-      "img": "url",
-      "id": 2
+      "img": "url"
     },
     {
       "userId": 2,
@@ -45,16 +45,14 @@
       "id": 1,
       "projectId": 1,
       "name": "step 1",
-      "description": "A new Step",
-      "isComplete": false,
+      "description": "A new Step 1",
       "img": "url"
     },
     {
       "id": 4,
       "projectId": 1,
       "name": "step 2",
-      "description": "Another Step",
-      "isComplete": false,
+      "description": "Another Step 2",
       "img": "url"
     },
     {
@@ -68,7 +66,7 @@
     {
       "id": 3,
       "projectId": 3,
-      "name": "step 1",
+      "name": "step 1 + 1",
       "description": "A new Step",
       "isComplete": false,
       "img": "url"
