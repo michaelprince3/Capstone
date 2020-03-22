@@ -19,11 +19,17 @@ const ProjectDetail = props => {
   const [renderTasks, setRenderTasks] = useState(false);
   const [stepId, setStepId] = useState();
   const [isStepEdit, setIsStepEdit] = useState(false);
+  const [isNewTask, setIsNewTask] = useState(false);
   const projectId = props.projectId;
 
   const newStep = () => {
     setIsNewForm(true);
   };
+
+  const newTask = () => {
+    setIsNewTask(true)
+    setRenderTasks(false)
+  }
 
   const stepEdit = id => {
     setStepId(id);
@@ -47,7 +53,7 @@ const ProjectDetail = props => {
 
   const updateStepState = step => {
     setSteps(step);
-    setIsStepEdit(false)
+    setIsStepEdit(false);
   };
 
   const getProjectInfo = () => {
@@ -113,7 +119,11 @@ const ProjectDetail = props => {
         </div>
         <div className="detailCards">
           {isStepEdit ? (
-            <StepEditForm updateStepState={updateStepState} stepId={stepId} {...props} />
+            <StepEditForm
+              updateStepState={updateStepState}
+              stepId={stepId}
+              {...props}
+            />
           ) : isNewForm ? (
             <div className="stepForm">
               <StepNewForm {...props} />
@@ -142,19 +152,25 @@ const ProjectDetail = props => {
               {tasks.map(task => (
                 <TaskListItem
                   key={task.id}
+                  updateTasks={updateTasks}
                   task={task}
                   deleteTask={deleteTask}
                   {...props}
                 />
               ))}
-              <TaskNewForm
-                key={stepId}
-                stepId={stepId}
-                updateTasks={updateTasks}
-                {...props}
-              />
             </div>
+          ) : isNewTask ? (
+            <TaskNewForm
+              key={stepId}
+              stepId={stepId}
+              updateTasks={updateTasks}
+              {...props}
+            />
           ) : null}
+        
+          <button type="button" onClick={newTask}>
+            Add
+          </button>
         </div>
       </div>
     </>

@@ -82,12 +82,12 @@
       "img": "url"
     },
     {
+      "id": 6,
       "stepId": 3,
-      "name": "something",
-      "description": "Description",
+      "name": "Something",
+      "description": "Descriptio",
       "isComplete": false,
-      "img": "url",
-      "id": 6
+      "img": "url"
     },
     {
       "stepId": 3,

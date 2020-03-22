@@ -2,6 +2,10 @@ const remoteURL = "http://localhost:5002";
 
 export default {
 
+  get(id) {
+    return fetch(`${remoteURL}/tasks/${id}`).then(results => results.json())
+  }, 
+
     getWithTasks(stepId) {
         return fetch(`${remoteURL}/steps/${stepId}?_embed=tasks`).then(results => results.json())
     },
@@ -23,7 +27,7 @@ export default {
       },
 
       update(editedTask) {
-        return fetch(`${remoteURL}/steps/${editedTask.id}`, {
+        return fetch(`${remoteURL}/tasks/${editedTask.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
