@@ -9,6 +9,11 @@
       "userName": "mike",
       "email": "mike@prince.com",
       "id": 2
+    },
+    {
+      "userName": "NewUser",
+      "email": "new@user.com",
+      "id": 3
     }
   ],
   "projects": [
@@ -86,15 +91,6 @@
     },
     {
       "userId": 2,
-      "name": "Your name",
-      "description": "An interesting project.",
-      "isActive": true,
-      "isComplete": false,
-      "img": "url",
-      "id": 9
-    },
-    {
-      "userId": 2,
       "name": "something",
       "description": "Description",
       "isActive": false,
@@ -110,6 +106,15 @@
       "isComplete": false,
       "img": "url",
       "id": 11
+    },
+    {
+      "userId": 3,
+      "name": "This is New Users first project",
+      "description": "this will be great",
+      "isActive": true,
+      "isComplete": false,
+      "img": "url",
+      "id": 12
     }
   ],
   "steps": [
@@ -147,7 +152,7 @@
       "projectId": 2,
       "name": "something",
       "description": "Another Step 2",
-      "isComplete": false,
+      "isComplete": true,
       "img": "url",
       "id": 5
     },
@@ -182,6 +187,14 @@
       "isComplete": false,
       "img": "url",
       "id": 9
+    },
+    {
+      "projectId": 12,
+      "name": "1st step",
+      "description": "The hardest step",
+      "isComplete": false,
+      "img": "url",
+      "id": 10
     }
   ],
   "tasks": [
@@ -230,7 +243,7 @@
       "stepId": 2,
       "name": "Fluffy",
       "description": "Another Step 2",
-      "isComplete": true,
+      "isComplete": false,
       "img": "url"
     },
     {
@@ -288,6 +301,14 @@
       "isComplete": false,
       "img": "url",
       "id": 20
+    },
+    {
+      "stepId": 2,
+      "name": "something",
+      "description": "Description",
+      "isComplete": false,
+      "img": "url",
+      "id": 23
     }
   ],
   "collaborations": [

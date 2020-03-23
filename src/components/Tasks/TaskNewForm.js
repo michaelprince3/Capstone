@@ -27,8 +27,8 @@ const TaskNewForm = props => {
       window.alert("Please input all fields");
     } else {
       setIsLoading(true);
-      TaskManager.post(task)
-      props.getTasks(stepId)
+      TaskManager.post(task).then(() => props.getTasks(stepId))
+      
         // .then(() => StepManager.getWithTasks(stepId))
         // .then(results => {
         //   props.setTasks(results.tasks);

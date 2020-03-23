@@ -1,3 +1,4 @@
+// Project list shows all projects in database filtered and runs the new project component
 import React, { useState, useEffect } from "react";
 import ProjectManager from "../../modules/ProjectManager";
 import ProjectCard from "./ProjectCard";
@@ -15,9 +16,9 @@ const ProjectList = props => {
     isNew === false
     ? (setIsNew(true))
     : (setIsNew(false))
-  };
 
   //get projects from database and filter them by future, active, complete
+
   const getProjects = () => {
     const activeUserId = sessionStorage.getItem("id");
     return ProjectManager.getAll(activeUserId).then(projects => {
