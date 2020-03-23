@@ -52,8 +52,8 @@
       "userId": 2,
       "name": "something",
       "description": "Description",
-      "isActive": false,
-      "isComplete": false,
+      "isActive": true,
+      "isComplete": true,
       "img": "url",
       "id": 5
     },
@@ -61,8 +61,8 @@
       "userId": 2,
       "name": "Your name",
       "description": "Description",
-      "isActive": false,
-      "isComplete": false,
+      "isActive": true,
+      "isComplete": true,
       "img": "url",
       "id": 6
     },

@@ -3,6 +3,8 @@ import "./project.css";
 import ProjectManager from "../../modules/ProjectManager";
 
 const ProjectCard = props => {
+
+  
   
   const activateProject = (id, boolean) => {
     ProjectManager.active(id, boolean);
@@ -12,7 +14,7 @@ const ProjectCard = props => {
   return (
     <>
       <div className="projectCard" >
-        <div className="projectCardContent" onClick={props.openCard}>
+        <div className="projectCardContent" onClick={() => props.openCard(props.project.id)}>
           <h3>
             <span className="projectCardTitle">{props.project.name}</span>
           </h3>

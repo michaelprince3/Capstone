@@ -8,6 +8,8 @@ const Main = () => {
 
     const [hasUser, setHasUser] = useState(isAuthenticated());
 
+    const userId = sessionStorage.getItem("id")
+   
     const setUser = (user, id) => {
         sessionStorage.setItem("credentials", JSON.stringify(user));
         sessionStorage.setItem("id", id)
@@ -21,8 +23,8 @@ const Main = () => {
 
     return (
         <>
-        <NavBar hasUser={hasUser} clearUser={clearUser} />
-        <ApplicationViews hasUser={hasUser} setUser={setUser} />
+        <NavBar hasUser={hasUser} clearUser={clearUser}  />
+        <ApplicationViews hasUser={hasUser} setUser={setUser} userId={userId} />
         </>
     )
 }
