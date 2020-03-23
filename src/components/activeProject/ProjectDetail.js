@@ -17,52 +17,52 @@ const ProjectDetail = props => {
   const [isNewForm, setIsNewForm] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [renderTasks, setRenderTasks] = useState(false);
-  const [stepId, setStepId] = useState("");
+  const [stepId, setStepId] = useState();
   const [isStepEdit, setIsStepEdit] = useState(false);
   const [isNewTask, setIsNewTask] = useState(false);
   const [isProjectEdit, setIsProjectEdit] = useState(false);
   const projectId = props.projectId;
-
+  //set state to new form to load the new project form
   const newStep = () => {
     setIsNewForm(true);
   };
-
+  //sets state to load the edit project form
   const projectEdit = () => {
     setIsProjectEdit(true);
   };
-
+  //sets state to switch from render tasks to new task
   const newTask = () => {
     setIsNewTask(true);
     setRenderTasks(false);
   };
-
+  //sets state to the current step ID and edit steps
   const stepEdit = id => {
     setStepId(id);
     setIsStepEdit(true);
   };
-
+  //sets state to render tasks loads the current step ID and turns off new task form
   const showTasks = id => {
     setIsNewTask(false);
     setRenderTasks(true);
     setStepId(id);
   };
-
+  //sets state to the new tasks after edit and reloads tasks
   const updateTasks = updatedTasks => {
     setTasks(updatedTasks);
     setRenderTasks(true);
     setIsNewTask(false);
   };
-
+  //sets state to turn off project edit and sets the new project
   const updateProjectState = project => {
     setProject(project);
     setIsProjectEdit(false);
   };
-
+  //sets new step state and turns off edit
   const updateStepState = step => {
     setSteps(step);
     setIsStepEdit(false);
   };
-
+  // gets the project info from database 
   const getProjectInfo = () => {
     ProjectManager.getWithSteps(projectId).then(proj => {
       setSteps(proj.steps);
@@ -76,27 +76,27 @@ const ProjectDetail = props => {
       setIsNewForm(false);
     });
   };
-
+  //deletes a project
   const deleteProject = id => {
     ProjectManager.delete(id).then(() => props.history.push("/active"));
   };
-
+  //deletes a step
   const deleteStep = id => {
     StepManager.delete(id).then(() =>
       ProjectManager.getWithSteps(projectId).then(data => setSteps(data.steps))
     );
   };
-
+  //deletes a task
   const deleteTask = id => {
     TaskManager.delete(id).then(() =>
       TaskManager.getWithTasks(stepId).then(data => setTasks(data.tasks))
     );
   };
-
+  //sets project as complete
   const completeProject = (id, boolean) => {
     ProjectManager.complete(id, boolean).then(() => props.history.push("/active"))
   };
-
+  //get tasks from database
   const getTasks = stepId => {
     StepManager.getWithTasks(stepId)
       .then(data => {
@@ -104,11 +104,10 @@ const ProjectDetail = props => {
       })
       .then(() => showTasks(stepId));
   };
-
+  
   useEffect(() => {
-    getProjectInfo();
-    getTasks(stepId)
-  }, [stepId]);
+    getProjectInfo();    
+  }, []);
 
   return (
     <>
