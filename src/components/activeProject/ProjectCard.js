@@ -1,22 +1,36 @@
 import React from "react";
 import "./project.css";
+import ProjectManager from "../../modules/ProjectManager";
 
 const ProjectCard = props => {
-  //   if (props.task.isComplete === false) {
-
-  const openCard = () => {
-    props.history.push(`/projects/${props.project.id}`);
+  
+  const activateProject = (id, boolean) => {
+    ProjectManager.active(id, boolean);
+    props.openCard()
   };
+ 
   return (
-    <div className="projectCard" onClick={openCard}>
-      <div className="projectCardContent">
-        <h3>
-          <span className="projectCardTitle">{props.project.name}</span>
-        </h3>
-        <p>{props.project.description}</p>
-        <p>A pretty image</p>
+    <>
+      <div className="projectCard" >
+        <div className="projectCardContent" onClick={props.openCard}>
+          <h3>
+            <span className="projectCardTitle">{props.project.name}</span>
+          </h3>
+          <p>{props.project.description}</p>
+          <p>A pretty image</p>
+        </div>
+        {props.project.isActive === false &&
+          <div className="btn">
+            <button
+              type="button"
+              onClick={() => activateProject(props.project.id, true)}
+            >
+              Activate
+            </button>
+          </div>
+        }
       </div>
-    </div>
+    </>
   );
   //   } else {return(null)}
 };

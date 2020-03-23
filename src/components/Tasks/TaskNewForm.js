@@ -28,11 +28,12 @@ const TaskNewForm = props => {
     } else {
       setIsLoading(true);
       TaskManager.post(task)
-        .then(() => StepManager.getWithTasks(stepId))
-        .then(results => {
-          setTasks(results);
-          props.updateTasks(tasks)
-        });
+      props.getTasks(stepId)
+        // .then(() => StepManager.getWithTasks(stepId))
+        // .then(results => {
+        //   props.setTasks(results.tasks);
+        //   props.updateTasks(tasks)
+        // });
     }
   };
 
