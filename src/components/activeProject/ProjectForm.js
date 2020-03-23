@@ -3,6 +3,8 @@ import ProjectManager from "../../modules/ProjectManager";
 
 const ProjectForm = props => {
   const userId = sessionStorage.getItem("id");
+  const [isLoading, setIsLoading] = useState(false);
+  
   const [project, setProject] = useState({
     userId: parseInt(userId),
     name: "",
@@ -11,7 +13,7 @@ const ProjectForm = props => {
     isComplete: false,
     img: "url"
   });
-  const [isLoading, setIsLoading] = useState(false);
+  
 
   const handleFieldChange = evt => {
     const stateToChange = { ...project };
