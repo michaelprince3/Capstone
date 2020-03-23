@@ -6,9 +6,10 @@ import ProjectForm from "./ProjectForm";
 const ProjectList = props => {
   const [projects, setProjects] = useState([]);
   const [isNew, setIsNew] = useState(false);
+  
 
-  const openCard = () => {
-    props.history.push(`/projects/${props.project.id}`);
+  const openCard = (id) => {
+    props.history.push(`/projects/${id}`);
   };
 
   const makeNew = () => {
@@ -21,10 +22,14 @@ const ProjectList = props => {
 
   const getProjects = () => {
     return ProjectManager.getAll().then(projects => {
+      // const projects = data.filter(
+      //   d => parseInt(d.userId) === activeUserId,
+      //   )
+      //   console.log(projects)
       let filteredProjects = [];
       if (props.location.pathname === "/future") {
         filteredProjects = projects.filter(
-          project => project.isActive === false
+          project => project.isActive === false 
         );
         setProjects(filteredProjects);
       } else if (props.location.pathname === "/active") {

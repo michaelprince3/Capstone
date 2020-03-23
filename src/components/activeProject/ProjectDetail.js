@@ -68,7 +68,9 @@ const ProjectDetail = props => {
       setSteps(proj.steps);
       setProject({
         name: proj.name,
-        description: proj.description
+        description: proj.description,
+        isActive: proj.isActive,
+        isComplete: proj.isComplete
       });
       setIsLoading(false);
     });
@@ -88,6 +90,10 @@ const ProjectDetail = props => {
     TaskManager.delete(id).then(() =>
       TaskManager.getWithTasks(stepId).then(data => setTasks(data.tasks))
     );
+  };
+
+  const completeProject = (id, boolean) => {
+    ProjectManager.complete(id, boolean);
   };
 
   const getTasks = stepId => {
@@ -125,6 +131,14 @@ const ProjectDetail = props => {
               >
                 Delete
               </button>
+              {project.isComplete === false && project.isActive === true ? (
+                <button
+                  type="button"
+                  onClick={() => completeProject(projectId, true)}
+                >
+                  Complete Project
+                </button>
+              ) : null}
             </div>
           )}
         </div>

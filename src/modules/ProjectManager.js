@@ -49,5 +49,15 @@ export default {
       },
       body: JSON.stringify({ id, isActive })
     });
+  },
+
+  complete(id, isComplete) {
+    return fetch(`${remoteURL}/projects/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id, isComplete })
+    });
   }
 };
