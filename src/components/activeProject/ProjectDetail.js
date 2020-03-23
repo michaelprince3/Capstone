@@ -17,7 +17,7 @@ const ProjectDetail = props => {
   const [isNewForm, setIsNewForm] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [renderTasks, setRenderTasks] = useState(false);
-  const [stepId, setStepId] = useState();
+  const [stepId, setStepId] = useState("");
   const [isStepEdit, setIsStepEdit] = useState(false);
   const [isNewTask, setIsNewTask] = useState(false);
   const [isProjectEdit, setIsProjectEdit] = useState(false);
@@ -73,6 +73,7 @@ const ProjectDetail = props => {
         isComplete: proj.isComplete
       });
       setIsLoading(false);
+      setIsNewForm(false);
     });
   };
 
@@ -93,7 +94,7 @@ const ProjectDetail = props => {
   };
 
   const completeProject = (id, boolean) => {
-    ProjectManager.complete(id, boolean);
+    ProjectManager.complete(id, boolean).then(() => props.history.push("/active"))
   };
 
   const getTasks = stepId => {
@@ -103,9 +104,11 @@ const ProjectDetail = props => {
       })
       .then(() => showTasks(stepId));
   };
+
   useEffect(() => {
     getProjectInfo();
-  }, []);
+    getTasks(stepId)
+  }, [stepId]);
 
   return (
     <>
@@ -151,7 +154,11 @@ const ProjectDetail = props => {
             />
           ) : isNewForm ? (
             <div className="stepForm">
-              <StepNewForm stepId={stepId} {...props} />
+              <StepNewForm
+                stepId={stepId}
+                getProjectInfo={getProjectInfo}
+                {...props}
+              />
             </div>
           ) : (
             <div className="stepList">
@@ -159,6 +166,7 @@ const ProjectDetail = props => {
                 <StepListItem
                   key={step.id}
                   step={step}
+                  getProjectInfo={getProjectInfo}
                   getTasks={getTasks}
                   deleteStep={deleteStep}
                   stepEdit={stepEdit}
@@ -172,12 +180,13 @@ const ProjectDetail = props => {
           )}
         </div>
         <div className="detailCards">
-          {renderTasks ? (
+          {renderTasks && stepId !== "" ? (
             <div className="taskList">
               {tasks.map(task => (
                 <TaskListItem
                   key={task.id}
                   updateTasks={updateTasks}
+                  getTasks={getTasks}
                   task={task}
                   deleteTask={deleteTask}
                   {...props}

@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import StepManager from "../../modules/StepManager";
 
 
 const StepListItem = props => {
+  const [stepComplete, setStepComplete] = useState(false)
+
+  const completeStep = (id) => {
+    stepComplete === false ? setStepComplete(true) : setStepComplete(false);
+    StepManager.complete(id, stepComplete).then(() => props.getProjectInfo());
+  };
+
 
   return (
     <div className="projectStep" >
@@ -17,6 +25,12 @@ const StepListItem = props => {
         <button
         type="button"
         onClick={() => props.deleteStep(props.step.id)}>Delete</button>
+        <input
+            type="checkbox"
+            id="isComplete"
+            checked={props.step.isComplete}
+            onChange={() => completeStep(props.step.id)}
+          />
       </div>
     </div>
   );

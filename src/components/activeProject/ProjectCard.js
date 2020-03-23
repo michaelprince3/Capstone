@@ -3,34 +3,36 @@ import "./project.css";
 import ProjectManager from "../../modules/ProjectManager";
 
 const ProjectCard = props => {
+  const projectId = parseInt(props.project.id);
 
-  
-  
   const activateProject = (id, boolean) => {
     ProjectManager.active(id, boolean);
-    props.openCard()
+    props.openCard(projectId);
   };
- 
+
   return (
     <>
-      <div className="projectCard" >
-        <div className="projectCardContent" onClick={() => props.openCard(props.project.id)}>
+      <div className="projectCard">
+        <div
+          className="projectCardContent"
+          onClick={() => props.openCard(projectId)}
+        >
           <h3>
             <span className="projectCardTitle">{props.project.name}</span>
           </h3>
           <p>{props.project.description}</p>
           <p>A pretty image</p>
         </div>
-        {props.project.isActive === false &&
+        {props.project.isActive === false && (
           <div className="btn">
             <button
               type="button"
-              onClick={() => activateProject(props.project.id, true)}
+              onClick={() => activateProject(projectId, true)}
             >
               Activate
             </button>
           </div>
-        }
+        )}
       </div>
     </>
   );

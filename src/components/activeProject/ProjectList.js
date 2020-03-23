@@ -6,30 +6,25 @@ import ProjectForm from "./ProjectForm";
 const ProjectList = props => {
   const [projects, setProjects] = useState([]);
   const [isNew, setIsNew] = useState(false);
-  
-
-  const openCard = (id) => {
+  //open project detail
+  const openCard = id => {
     props.history.push(`/projects/${id}`);
   };
-
-  const makeNew = () => {
-    setIsNew(true);
+  // toggle the new project form
+  const toggleNew = () => {
+    isNew === false
+    ? (setIsNew(true))
+    : (setIsNew(false))
   };
 
-  const makeNotNew = () => {
-    setIsNew(false)
-  }
-
+  
   const getProjects = () => {
-    return ProjectManager.getAll().then(projects => {
-      // const projects = data.filter(
-      //   d => parseInt(d.userId) === activeUserId,
-      //   )
-      //   console.log(projects)
+    const activeUserId = sessionStorage.getItem("id");
+    return ProjectManager.getAll(activeUserId).then(projects => {
       let filteredProjects = [];
       if (props.location.pathname === "/future") {
         filteredProjects = projects.filter(
-          project => project.isActive === false 
+          project => project.isActive === false
         );
         setProjects(filteredProjects);
       } else if (props.location.pathname === "/active") {
@@ -54,12 +49,12 @@ const ProjectList = props => {
     <>
       {isNew ? (
         <div>
-          <ProjectForm openCard={openCard} makeNotNew={makeNotNew} {...props} />
+          <ProjectForm openCard={openCard} toggleNew={toggleNew} getProjects={getProjects} {...props} />
         </div>
       ) : (
         <div className="cards">
           <section className="projectSection">
-            <button type="button" className="btn" onClick={makeNew}>
+            <button type="button" className="btn" onClick={toggleNew}>
               New Project
             </button>
           </section>

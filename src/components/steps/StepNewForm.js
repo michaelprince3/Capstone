@@ -24,7 +24,7 @@ const StepNewForm = props => {
       window.alert("Please input all fields");
     } else {
       setIsLoading(true);
-      StepManager.post(step).then(() => props.history.push("/projects/:projectId(\d+)"));
+      StepManager.post(step).then(() => props.getProjectInfo());
     }
   };
 

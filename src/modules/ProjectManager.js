@@ -5,8 +5,8 @@ export default {
     return fetch(`${remoteURL}/projects/${id}`).then(results => results.json());
   },
 
-  getAll() {
-    return fetch(`${remoteURL}/projects`).then(results => results.json());
+  getAll(id) {
+    return fetch(`${remoteURL}/projects?userId=${id}`).then(results => results.json());
   },
 
   getWithSteps(projectId) {
