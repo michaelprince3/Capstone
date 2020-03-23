@@ -3,11 +3,11 @@ import StepManager from "../../modules/StepManager";
 
 
 const StepListItem = props => {
-  const [stepComplete, setStepComplete] = useState(false)
+  
 
-  const completeStep = (id) => {
-    stepComplete === false ? setStepComplete(true) : setStepComplete(false);
-    StepManager.complete(id, stepComplete).then(() => props.getProjectInfo());
+  const completeStep = step => {
+    
+    StepManager.complete(step.id, !step.isComplete).then(() => props.getProjectInfo());
   };
 
 
@@ -29,7 +29,7 @@ const StepListItem = props => {
             type="checkbox"
             id="isComplete"
             checked={props.step.isComplete}
-            onChange={() => completeStep(props.step.id)}
+            onChange={() => completeStep(props.step)}
           />
       </div>
     </div>

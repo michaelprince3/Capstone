@@ -25,10 +25,10 @@ const ProjectForm = props => {
       window.alert("Please input all fields");
     } else {
       setIsLoading(true);
-      ProjectManager.post(project).then(() => 
-      props.toggleNew(),
+      ProjectManager.post(project).then(() => {
+      props.toggleNew()
       props.getProjects()
-      )
+      })
     }
   };
 
