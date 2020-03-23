@@ -17,7 +17,7 @@ const ProjectList = props => {
     : (setIsNew(false))
   };
 
-  
+  //get projects from database and filter them by future, active, complete
   const getProjects = () => {
     const activeUserId = sessionStorage.getItem("id");
     return ProjectManager.getAll(activeUserId).then(projects => {
