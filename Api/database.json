@@ -16,8 +16,8 @@
       "id": 1,
       "userId": 1,
       "name": "PROJECT 1",
-      "description": "An interesting project.",
-      "isActive": false,
+      "description": "An interesting project",
+      "isActive": true,
       "isComplete": false,
       "img": "url"
     },
@@ -38,6 +38,42 @@
       "isComplete": true,
       "img": "url",
       "id": 3
+    },
+    {
+      "userId": 2,
+      "name": "Interesting new project",
+      "description": "This is the best project",
+      "isActive": false,
+      "isComplete": false,
+      "img": "url",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "name": "something",
+      "description": "Description",
+      "isActive": false,
+      "isComplete": false,
+      "img": "url",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "name": "Your name",
+      "description": "Description",
+      "isActive": false,
+      "isComplete": false,
+      "img": "url",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "name": "Mini",
+      "description": "An interesting project.",
+      "isActive": false,
+      "isComplete": false,
+      "img": "url",
+      "id": 7
     }
   ],
   "steps": [
@@ -77,7 +113,7 @@
       "id": 1,
       "stepId": 1,
       "name": "First Task",
-      "descrition": "A new task",
+      "description": "A new task",
       "isComplete": false,
       "img": "url"
     },
@@ -98,12 +134,60 @@
       "id": 7
     },
     {
-      "stepId": 1,
-      "name": "something",
+      "stepId": 4,
+      "name": "Your name",
       "description": "Description",
       "isComplete": false,
       "img": "url",
-      "id": 8
+      "id": 9
+    },
+    {
+      "stepId": 4,
+      "name": "Fluffy",
+      "description": "Description",
+      "isComplete": false,
+      "img": "url",
+      "id": 10
+    },
+    {
+      "id": 12,
+      "stepId": 2,
+      "name": "Fluffy",
+      "description": "Another Step 2",
+      "isComplete": false,
+      "img": "url"
+    },
+    {
+      "stepId": 3,
+      "name": "Your name",
+      "description": "An interesting project.",
+      "isComplete": false,
+      "img": "url",
+      "id": 14
+    },
+    {
+      "stepId": 1,
+      "name": "Your name",
+      "description": "Description",
+      "isComplete": false,
+      "img": "url",
+      "id": 15
+    },
+    {
+      "stepId": 1,
+      "name": "Your name",
+      "description": "Another Step 2",
+      "isComplete": false,
+      "img": "url",
+      "id": 16
+    },
+    {
+      "stepId": 2,
+      "name": "Your name",
+      "description": "Description ",
+      "isComplete": false,
+      "img": "url",
+      "id": 17
     }
   ],
   "collaborations": [

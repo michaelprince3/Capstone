@@ -25,7 +25,8 @@ const ProjectForm = props => {
       window.alert("Please input all fields");
     } else {
       setIsLoading(true);
-      ProjectManager.post(project).then(() => props.history.push("/active"));
+      ProjectManager.post(project).then(() => props.history.push("/future"));
+      props.makeNotNew()
     }
   };
 

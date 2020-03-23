@@ -20,16 +20,21 @@ const ProjectDetail = props => {
   const [stepId, setStepId] = useState();
   const [isStepEdit, setIsStepEdit] = useState(false);
   const [isNewTask, setIsNewTask] = useState(false);
+  const [isProjectEdit, setIsProjectEdit] = useState(false);
   const projectId = props.projectId;
 
   const newStep = () => {
     setIsNewForm(true);
   };
 
+  const projectEdit = () => {
+    setIsProjectEdit(true);
+  };
+
   const newTask = () => {
-    setIsNewTask(true)
-    setRenderTasks(false)
-  }
+    setIsNewTask(true);
+    setRenderTasks(false);
+  };
 
   const stepEdit = id => {
     setStepId(id);
@@ -37,18 +42,20 @@ const ProjectDetail = props => {
   };
 
   const showTasks = id => {
+    setIsNewTask(false);
     setRenderTasks(true);
     setStepId(id);
-    getTasks(id);
   };
 
   const updateTasks = updatedTasks => {
-    setTasks([]);
     setTasks(updatedTasks);
+    setRenderTasks(true);
+    setIsNewTask(false);
   };
 
   const updateProjectState = project => {
     setProject(project);
+    setIsProjectEdit(false);
   };
 
   const updateStepState = step => {
@@ -84,10 +91,11 @@ const ProjectDetail = props => {
   };
 
   const getTasks = stepId => {
-    setTasks([]);
-    StepManager.getWithTasks(stepId).then(data => {
-      setTasks(data.tasks);
-    });
+    StepManager.getWithTasks(stepId)
+      .then(data => {
+        setTasks(data.tasks);
+      })
+      .then(() => showTasks(stepId));
   };
   useEffect(() => {
     getProjectInfo();
@@ -97,25 +105,28 @@ const ProjectDetail = props => {
     <>
       <div className="detailCardContainer">
         <div className="detailCards">
-          <div className="ProjectDetails">
-            <h3>
-              Name: <span>{project.name}</span>
-            </h3>
-            <p>{project.description}</p>
-            <button type="button" className="btn">
-              Edit
-            </button>
-            <button
-              type="button"
-              className="btn"
-              onClick={() => deleteProject(projectId)}
-            >
-              Delete
-            </button>
-          </div>
-          <div className="projectEdit">
-            <ProjectEdit updateProjectState={updateProjectState} {...props} />
-          </div>
+          {isProjectEdit ? (
+            <div className="projectEdit">
+              <ProjectEdit updateProjectState={updateProjectState} {...props} />
+            </div>
+          ) : (
+            <div className="ProjectDetails">
+              <h3>
+                Name: <span>{project.name}</span>
+              </h3>
+              <p>{project.description}</p>
+              <button type="button" className="btn" onClick={projectEdit}>
+                Edit
+              </button>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => deleteProject(projectId)}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </div>
         <div className="detailCards">
           {isStepEdit ? (
@@ -126,7 +137,7 @@ const ProjectDetail = props => {
             />
           ) : isNewForm ? (
             <div className="stepForm">
-              <StepNewForm {...props} />
+              <StepNewForm stepId={stepId} {...props} />
             </div>
           ) : (
             <div className="stepList">
@@ -134,7 +145,7 @@ const ProjectDetail = props => {
                 <StepListItem
                   key={step.id}
                   step={step}
-                  showTasks={showTasks}
+                  getTasks={getTasks}
                   deleteStep={deleteStep}
                   stepEdit={stepEdit}
                   {...props}
@@ -158,19 +169,18 @@ const ProjectDetail = props => {
                   {...props}
                 />
               ))}
+              <button type="button" onClick={newTask}>
+                Add
+              </button>
             </div>
           ) : isNewTask ? (
             <TaskNewForm
               key={stepId}
               stepId={stepId}
-              updateTasks={updateTasks}
+              getTasks={getTasks}
               {...props}
             />
           ) : null}
-        
-          <button type="button" onClick={newTask}>
-            Add
-          </button>
         </div>
       </div>
     </>
