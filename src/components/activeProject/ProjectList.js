@@ -1,4 +1,3 @@
-// Project list shows all projects in database filtered and runs the new project component
 import React, { useState, useEffect } from "react";
 import ProjectManager from "../../modules/ProjectManager";
 import ProjectCard from "./ProjectCard";
@@ -13,10 +12,8 @@ const ProjectList = props => {
   };
   // toggle the new project form
   const toggleNew = () => {
-    isNew === false
-    ? (setIsNew(true))
-    : (setIsNew(false))
-
+    isNew === false ? setIsNew(true) : setIsNew(false);
+  };
   //get projects from database and filter them by future, active, complete
 
   const getProjects = () => {
@@ -50,7 +47,12 @@ const ProjectList = props => {
     <>
       {isNew ? (
         <div>
-          <ProjectForm openCard={openCard} toggleNew={toggleNew} getProjects={getProjects} {...props} />
+          <ProjectForm
+            openCard={openCard}
+            toggleNew={toggleNew}
+            getProjects={getProjects}
+            {...props}
+          />
         </div>
       ) : (
         <div className="cards">
