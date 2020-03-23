@@ -18,7 +18,7 @@
       "name": "PROJECT 1",
       "description": "An interesting project",
       "isActive": true,
-      "isComplete": false,
+      "isComplete": true,
       "img": "url"
     },
     {
@@ -43,7 +43,7 @@
       "userId": 2,
       "name": "Interesting new project",
       "description": "This is the best project",
-      "isActive": false,
+      "isActive": true,
       "isComplete": false,
       "img": "url",
       "id": 4
@@ -70,10 +70,46 @@
       "userId": 2,
       "name": "Mini",
       "description": "An interesting project.",
+      "isActive": true,
+      "isComplete": true,
+      "img": "url",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "userId": 2,
+      "name": "This Is the project ",
+      "description": "An amazing project",
+      "isActive": true,
+      "isComplete": true,
+      "img": "url"
+    },
+    {
+      "userId": 2,
+      "name": "Your name",
+      "description": "An interesting project.",
+      "isActive": true,
+      "isComplete": false,
+      "img": "url",
+      "id": 9
+    },
+    {
+      "userId": 2,
+      "name": "something",
+      "description": "Description",
       "isActive": false,
       "isComplete": false,
       "img": "url",
-      "id": 7
+      "id": 10
+    },
+    {
+      "userId": 2,
+      "name": "something",
+      "description": "Description",
+      "isActive": false,
+      "isComplete": false,
+      "img": "url",
+      "id": 11
     }
   ],
   "steps": [
@@ -96,7 +132,7 @@
       "projectId": 2,
       "name": "step 1",
       "description": "A new Step",
-      "isComplete": false,
+      "isComplete": true,
       "img": "url"
     },
     {
@@ -106,6 +142,46 @@
       "description": "A new Step",
       "isComplete": false,
       "img": "url"
+    },
+    {
+      "projectId": 2,
+      "name": "something",
+      "description": "Another Step 2",
+      "isComplete": false,
+      "img": "url",
+      "id": 5
+    },
+    {
+      "projectId": 3,
+      "name": "something",
+      "description": "Another Step 2",
+      "isComplete": false,
+      "img": "url",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "projectId": 8,
+      "name": "Step 1 fix capstone",
+      "description": "fix it",
+      "isComplete": true,
+      "img": "url"
+    },
+    {
+      "projectId": 8,
+      "name": "Step 2 celebrate",
+      "description": "Party time",
+      "isComplete": true,
+      "img": "url",
+      "id": 8
+    },
+    {
+      "projectId": 4,
+      "name": "something",
+      "description": "Description",
+      "isComplete": false,
+      "img": "url",
+      "id": 9
     }
   ],
   "tasks": [
@@ -122,7 +198,7 @@
       "stepId": 3,
       "name": "Something",
       "description": "Descriptio",
-      "isComplete": false,
+      "isComplete": true,
       "img": "url"
     },
     {
@@ -154,7 +230,7 @@
       "stepId": 2,
       "name": "Fluffy",
       "description": "Another Step 2",
-      "isComplete": false,
+      "isComplete": true,
       "img": "url"
     },
     {
@@ -184,10 +260,34 @@
     {
       "stepId": 2,
       "name": "Your name",
-      "description": "Description ",
+      "description": "An interesting project.",
       "isComplete": false,
       "img": "url",
       "id": 17
+    },
+    {
+      "id": 18,
+      "stepId": 7,
+      "name": "find bugs",
+      "description": "Where are the bugs",
+      "isComplete": true,
+      "img": "url"
+    },
+    {
+      "stepId": 7,
+      "name": "Fix bugs",
+      "description": "The hardest part",
+      "isComplete": true,
+      "img": "url",
+      "id": 19
+    },
+    {
+      "stepId": 9,
+      "name": "something",
+      "description": "Description",
+      "isComplete": false,
+      "img": "url",
+      "id": 20
     }
   ],
   "collaborations": [
