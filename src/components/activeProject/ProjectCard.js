@@ -5,6 +5,7 @@ import ProjectManager from "../../modules/ProjectManager";
 const ProjectCard = props => {
   const projectId = parseInt(props.project.id);
 
+  //sets the project as active
   const activateProject = (id, boolean) => {
     ProjectManager.active(id, boolean);
     props.openCard(projectId);
