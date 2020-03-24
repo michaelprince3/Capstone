@@ -83,7 +83,9 @@ const ProjectDetail = props => {
   //deletes a step
   const deleteStep = id => {
     StepManager.delete(id).then(() =>
-      ProjectManager.getWithSteps(projectId).then(data => setSteps(data.steps))
+      ProjectManager.getWithSteps(projectId).then(data => setSteps(data.steps)),
+      setRenderTasks(false)
+
     );
   };
   //deletes a task
@@ -166,6 +168,7 @@ const ProjectDetail = props => {
                   key={step.id}
                   step={step}
                   getProjectInfo={getProjectInfo}
+
                   getTasks={getTasks}
                   deleteStep={deleteStep}
                   stepEdit={stepEdit}

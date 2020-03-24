@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews"
-import "./Main.css"
+
 
 const Main = () => {
     const isAuthenticated =() => sessionStorage.getItem("credentials") !== null;

@@ -18,7 +18,6 @@ const StepListItem = props => {
           <span className="projectStepTitle" onClick={() => props.getTasks(props.step.id)}>{props.step.name}</span>
         </h3>
         <p>{props.step.description}</p>
-        <button>Add Task</button>
         <button
         type="button"
         onClick={() => props.stepEdit(props.step.id)}>Edit</button>
