@@ -181,14 +181,6 @@
       "img": "url"
     },
     {
-      "projectId": 2,
-      "name": "something",
-      "description": "Another Step 2",
-      "isComplete": true,
-      "img": "url",
-      "id": 5
-    },
-    {
       "projectId": 3,
       "name": "something",
       "description": "Another Step 2",
