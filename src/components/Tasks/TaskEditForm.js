@@ -25,7 +25,7 @@ const TaskEditForm = props => {
       isComplete: task.isComplete,
       img: task.img
     };
-
+    
     TaskManager.update(editedTask).then(() =>
       StepManager.getWithTasks(task.stepId).then(data =>
         props.updateTasks(data.tasks)

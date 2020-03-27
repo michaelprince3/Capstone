@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProjectManager from "../../modules/ProjectManager";
 import ProjectCard from "./ProjectCard";
 import ProjectForm from "./ProjectForm";
+import { Button } from '@material-ui/core'
 
 const ProjectList = props => {
   const [projects, setProjects] = useState([]);
@@ -45,6 +46,7 @@ const ProjectList = props => {
 
   return (
     <>
+    
       {isNew ? (
         <div>
           <ProjectForm
@@ -57,9 +59,9 @@ const ProjectList = props => {
       ) : (
         <div className="cards">
           <section className="projectSection">
-            <button type="button" className="btn" onClick={toggleNew}>
+            <Button variant="contained" color="primary" type="button" className="btn" onClick={toggleNew}>
               New Project
-            </button>
+            </Button>
           </section>
           <div className="cardContainer">
             {projects.map(project => (

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews"
+import { CssBaseline } from "@material-ui/core";
 
 
 const Main = () => {
@@ -23,6 +24,7 @@ const Main = () => {
 
     return (
         <>
+        <CssBaseline/>
         <NavBar hasUser={hasUser} clearUser={clearUser}  />
         <ApplicationViews hasUser={hasUser} setUser={setUser} userId={userId} />
         </>

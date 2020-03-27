@@ -2,6 +2,15 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import {
+  Typography,
+  AppBar,
+  Link as Button
+} from "@material-ui/core";
+
+
+
+const size="h4"
 
 const NavBar = props => {
   const handleLogout = () => {
@@ -9,54 +18,94 @@ const NavBar = props => {
     props.history.push("/");
   };
 
+ 
+
   return (
     <header>
-      <h1 className="site-title">CapStone</h1>
-      <nav>
-        <ul className="container">
-          <li>
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
-          </li>
+      <Typography variant="h3" className="title">
+        Projectile
+      </Typography>
+      <AppBar  position="static" className="navBar">
+        <div className="container">
+          <Button
+            color="textPrimary"
+            component={Link}
+            className="navBtn"
+            to="/"
+          >
+            <Typography variant={size}>Home</Typography>
+          </Button>
+
           {props.hasUser ? (
-          <li>
-            <Link className="nav-link" to="/future">
-              Future Projects
-            </Link>
-          </li>
+            <Button
+              
+              color="textPrimary"
+              component={Link}
+              className="navBtn"
+              to="/future"
+            >
+              <Typography variant={size}>
+
+              Future
+              </Typography>
+            </Button>
           ) : null}
           {props.hasUser ? (
-          <li>
-            <Link className="nav-link" to="/active">
-              Active Projects
-            </Link>
-          </li>
+            <Button
+              color="textPrimary"
+              component={Link}
+              className="navBtn"
+              to="/active"
+            >
+              <Typography variant={size}>
+
+              Active
+              </Typography>
+            </Button>
           ) : null}
           {props.hasUser ? (
-          <li>
-            <Link className="nav-link" to="/complete">
-              Completed Projects
-            </Link>
-          </li>
+            <Button
+              color="textPrimary"
+              component={Link}
+              className="navBtn"
+              to="/complete"
+            >
+              <Typography variant={size}>
+
+              Completed
+              </Typography>
+            </Button>
           ) : null}
           {props.hasUser ? (
-          <li>
-            <Link className="nav-link" to="/" onClick={handleLogout}>
+            <Button
+              color="textPrimary"
+              component={Link}
+              className="navBtn"
+              to="/"
+              onClick={handleLogout}
+            >
+              <Typography variant={size}>
+
               Logout
-            </Link>
-          </li>
+              </Typography>
+            </Button>
           ) : (
-          <li>
-            <Link className="nav-link" to="/login">
+            <Button
+              color="textPrimary"
+              component={Link}
+              className="navBtn"
+              to="/login"
+            >
+              <Typography variant={size}>
+
               Login/Register
-            </Link>
-          </li>
+              </Typography>
+            </Button>
           )}
-        </ul>
-      </nav>
+        </div>
+      </AppBar>
     </header>
   );
 };
 
-export default withRouter(NavBar)
+export default withRouter(NavBar);

@@ -1,6 +1,14 @@
+.cardContainer {
+display: flex;
+flex-wrap: wrap;
+/* max-width: 100% !important; */
+}
+
 .projectCard {
-    border: solid 3px black;
-    max-width: 20%;
-    margin: 5px;
+    
+    border: whitesmoke solid 2px;
+    min-width: 25%;
+    max-width: 25%;
+    margin: 1em;
     padding: 2px;
 }
