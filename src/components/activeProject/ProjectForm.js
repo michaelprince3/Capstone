@@ -14,6 +14,8 @@ const ProjectForm = props => {
     img: "url"
   });
   
+  
+  
 
   const handleFieldChange = evt => {
     const stateToChange = { ...project };

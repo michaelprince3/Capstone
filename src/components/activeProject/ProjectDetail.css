@@ -2,8 +2,12 @@
     display: flex;
 }
 .detailCards {
-    border: solid black 5px;
+    /* border: solid rgb(133, 36, 36) 5px; */
     width: 30%;
     height: 400px;
+    margin: 1em;
+}
+
+.card {
     margin: 1em;
 }

@@ -80,7 +80,7 @@ const Login = props => {
         }
       });
       if (!valid) {
-        alert("incorrect username/password");
+        alert("incorrect username/email");
       }
     });
   };

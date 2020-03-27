@@ -9,6 +9,19 @@ import TaskNewForm from "../Tasks/TaskNewForm";
 import TaskManager from "../../modules/TaskManager";
 import ProjectEdit from "./ProjectEdit";
 import StepEditForm from "../steps/StepEditForm";
+import {
+  Button,
+  Typography,
+  Tooltip,
+  Card,
+  CardContent,
+  CardActions,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions
+} from "@material-ui/core";
 
 const ProjectDetail = props => {
   const [project, setProject] = useState({ name: "", description: "" });
@@ -22,6 +35,15 @@ const ProjectDetail = props => {
   const [isNewTask, setIsNewTask] = useState(false);
   const [isProjectEdit, setIsProjectEdit] = useState(false);
   const projectId = props.projectId;
+  const [confirmOpen, setConfirmOpen] = useState(false);
+
+  const handleConfirmOpen = () => {
+    setConfirmOpen(true);
+  };
+
+  const handleConfirmClose = () => {
+    setConfirmOpen(false);
+  };
   //set state to new form to load the new project form
   const newStep = () => {
     setIsNewForm(true);
@@ -62,7 +84,7 @@ const ProjectDetail = props => {
     setSteps(step);
     setIsStepEdit(false);
   };
-  // gets the project info from database 
+  // gets the project info from database
   const getProjectInfo = () => {
     ProjectManager.getWithSteps(projectId).then(proj => {
       setSteps(proj.steps);
@@ -78,14 +100,17 @@ const ProjectDetail = props => {
   };
   //deletes a project
   const deleteProject = id => {
-    ProjectManager.delete(id).then(() => props.history.push("/active"));
+    ProjectManager.delete(id).then(() => props.history.push("/active"))
+    handleConfirmClose()
   };
   //deletes a step
   const deleteStep = id => {
-    StepManager.delete(id).then(() =>
-      ProjectManager.getWithSteps(projectId).then(data => setSteps(data.steps)),
+    StepManager.delete(id).then(
+      () =>
+        ProjectManager.getWithSteps(projectId).then(data =>
+          setSteps(data.steps)
+        ),
       setRenderTasks(false)
-
     );
   };
   //deletes a task
@@ -96,7 +121,9 @@ const ProjectDetail = props => {
   };
   //sets project as complete
   const completeProject = (id, boolean) => {
-    ProjectManager.complete(id, boolean).then(() => props.history.push("/active"))
+    ProjectManager.complete(id, boolean).then(() =>
+      props.history.push("/active")
+    );
   };
   //get tasks from database
   const getTasks = stepId => {
@@ -106,9 +133,9 @@ const ProjectDetail = props => {
       })
       .then(() => showTasks(stepId));
   };
-  
+
   useEffect(() => {
-    getProjectInfo();    
+    getProjectInfo();
   }, []);
 
   return (
@@ -120,30 +147,68 @@ const ProjectDetail = props => {
               <ProjectEdit updateProjectState={updateProjectState} {...props} />
             </div>
           ) : (
-            <div className="ProjectDetails">
-              <h3>
-                Name: <span>{project.name}</span>
-              </h3>
-              <p>{project.description}</p>
-              <button type="button" className="btn" onClick={projectEdit}>
-                Edit
-              </button>
-              <button
-                type="button"
-                className="btn"
-                onClick={() => deleteProject(projectId)}
-              >
-                Delete
-              </button>
-              {project.isComplete === false && project.isActive === true ? (
-                <button
+            <Card className="card">
+              <CardContent>
+                <Typography variant="h5">
+                  Name: <span>{project.name}</span>
+                </Typography>
+                <Typography>{project.description}</Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant="contained"
                   type="button"
-                  onClick={() => completeProject(projectId, true)}
+                  className="btn"
+                  onClick={projectEdit}
                 >
-                  Complete Project
-                </button>
-              ) : null}
-            </div>
+                  Edit
+                </Button>
+                <Button
+                  variant="contained"
+                  type="button"
+                  className="btn"
+                  onClick={() => handleConfirmOpen()}
+                >
+                  Delete
+                </Button>
+                <Dialog
+                  open={confirmOpen}
+                  onClose={() => handleConfirmClose()}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    {"Delete your project?"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      This will delete the entire project. All Steps and tasks 
+                      related to this project will be lost.
+                      Are you sure you want to continue?
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleConfirmClose} color="primary">
+                      Disagree
+                    </Button>
+                    <Button onClick={() => deleteProject(projectId)} color="primary" autoFocus>
+                      Agree
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+                {project.isComplete === false && project.isActive === true ? (
+                  <Tooltip title="Complete">
+                    <Button
+                      variant="contained"
+                      type="button"
+                      onClick={() => completeProject(projectId, true)}
+                    >
+                      Complete
+                    </Button>
+                  </Tooltip>
+                ) : null}
+              </CardActions>
+            </Card>
           )}
         </div>
         <div className="detailCards">
@@ -168,16 +233,20 @@ const ProjectDetail = props => {
                   key={step.id}
                   step={step}
                   getProjectInfo={getProjectInfo}
-
                   getTasks={getTasks}
                   deleteStep={deleteStep}
                   stepEdit={stepEdit}
                   {...props}
                 />
               ))}
-              <button type="button" className="btn" onClick={newStep}>
+              <Button
+                variant="contained"
+                type="button"
+                className="btn"
+                onClick={newStep}
+              >
                 Add
-              </button>
+              </Button>
             </div>
           )}
         </div>
@@ -194,9 +263,9 @@ const ProjectDetail = props => {
                   {...props}
                 />
               ))}
-              <button type="button" onClick={newTask}>
+              <Button variant="contained" type="button" onClick={newTask}>
                 Add
-              </button>
+              </Button>
             </div>
           ) : isNewTask ? (
             <TaskNewForm
