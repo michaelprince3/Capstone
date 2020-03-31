@@ -1,3 +1,6 @@
+.projectSection {
+    margin: 1em;
+}
 .cardContainer {
 display: flex;
 flex-wrap: wrap;

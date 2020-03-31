@@ -60,17 +60,8 @@
       "name": "Interesting new project",
       "description": "This is the best project",
       "isActive": true,
-      "isComplete": false,
-      "img": "url"
-    },
-    {
-      "userId": 2,
-      "name": "something",
-      "description": "Description",
-      "isActive": true,
       "isComplete": true,
-      "img": "url",
-      "id": 5
+      "img": "url"
     },
     {
       "userId": 2,
@@ -127,31 +118,13 @@
       "id": 12
     },
     {
-      "userId": 4,
-      "name": "Fluffy",
-      "description": "Description",
-      "isActive": true,
-      "isComplete": true,
-      "img": "url",
-      "id": 13
-    },
-    {
-      "userId": 4,
-      "name": "New Project",
-      "description": "Description",
-      "isActive": false,
-      "isComplete": false,
-      "img": "url",
-      "id": 14
-    },
-    {
+      "id": 15,
       "userId": 2,
       "name": "Capstone",
       "description": "My capstone project",
       "isActive": true,
       "isComplete": false,
-      "img": "url",
-      "id": 15
+      "img": "url"
     },
     {
       "userId": 5,
@@ -190,22 +163,13 @@
       "id": 19
     },
     {
+      "id": 20,
       "userId": 2,
       "name": "something",
       "description": "Description",
       "isActive": true,
       "isComplete": false,
-      "img": "url",
-      "id": 20
-    },
-    {
-      "userId": 2,
-      "name": "something",
-      "description": "Description",
-      "isActive": true,
-      "isComplete": false,
-      "img": "url",
-      "id": 21
+      "img": "url"
     },
     {
       "userId": 2,
@@ -215,6 +179,24 @@
       "isComplete": false,
       "img": "url",
       "id": 22
+    },
+    {
+      "userId": 4,
+      "name": "Build a robot lawnmower",
+      "description": "A robot lawnmower to do my chores.",
+      "isActive": false,
+      "isComplete": false,
+      "img": "url",
+      "id": 23
+    },
+    {
+      "userId": 4,
+      "name": "Build something cool",
+      "description": "something cool",
+      "isActive": true,
+      "isComplete": true,
+      "img": "url",
+      "id": 24
     }
   ],
   "steps": [
@@ -265,12 +247,12 @@
       "id": 8
     },
     {
+      "id": 9,
       "projectId": 4,
       "name": "something",
       "description": "Description",
       "isComplete": false,
-      "img": "url",
-      "id": 9
+      "img": "url"
     },
     {
       "projectId": 12,
@@ -279,14 +261,6 @@
       "isComplete": false,
       "img": "url",
       "id": 10
-    },
-    {
-      "projectId": 13,
-      "name": "something",
-      "description": "This is the best project",
-      "isComplete": true,
-      "img": "url",
-      "id": 12
     },
     {
       "projectId": 11,
@@ -305,12 +279,12 @@
       "id": 14
     },
     {
+      "id": 15,
       "projectId": 15,
       "name": "Planning",
       "description": "Make a plan",
       "isComplete": false,
-      "img": "url",
-      "id": 15
+      "img": "url"
     },
     {
       "projectId": 15,
@@ -361,20 +335,12 @@
       "img": "url"
     },
     {
+      "id": 23,
       "projectId": 2,
       "name": "something",
       "description": "Description",
       "isComplete": false,
-      "img": "url",
-      "id": 23
-    },
-    {
-      "projectId": 21,
-      "name": "something",
-      "description": "Description",
-      "isComplete": false,
-      "img": "url",
-      "id": 24
+      "img": "url"
     },
     {
       "projectId": 22,
@@ -385,12 +351,44 @@
       "id": 25
     },
     {
+      "id": 26,
       "projectId": 2,
       "name": "something",
       "description": "Description",
       "isComplete": false,
+      "img": "url"
+    },
+    {
+      "id": 27,
+      "projectId": 24,
+      "name": "Planning",
+      "description": "Make a plan",
+      "isComplete": true,
+      "img": "url"
+    },
+    {
+      "projectId": 24,
+      "name": "Gather some Materials",
+      "description": "materials",
+      "isComplete": false,
       "img": "url",
-      "id": 26
+      "id": 28
+    },
+    {
+      "projectId": 24,
+      "name": "Finish the projct",
+      "description": "finish it",
+      "isComplete": false,
+      "img": "url",
+      "id": 29
+    },
+    {
+      "id": 30,
+      "projectId": 20,
+      "name": "something",
+      "description": "Description",
+      "isComplete": false,
+      "img": "url"
     }
   ],
   "tasks": [
@@ -483,20 +481,12 @@
       "img": "url"
     },
     {
-      "stepId": 12,
-      "name": "Fluffy",
-      "description": "This is the best project",
-      "isComplete": true,
-      "img": "url",
-      "id": 24
-    },
-    {
+      "id": 25,
       "stepId": 15,
       "name": "Have an idea",
       "description": "I don't have any",
       "isComplete": false,
-      "img": "url",
-      "id": 25
+      "img": "url"
     },
     {
       "stepId": 15,
@@ -563,14 +553,6 @@
       "img": "url"
     },
     {
-      "stepId": 24,
-      "name": "something",
-      "description": "Description",
-      "isComplete": false,
-      "img": "url",
-      "id": 34
-    },
-    {
       "stepId": 9,
       "name": "Your name",
       "description": "Description",
@@ -593,6 +575,30 @@
       "isComplete": false,
       "img": "url",
       "id": 37
+    },
+    {
+      "stepId": 27,
+      "name": "Come up with a plan",
+      "description": "Plan the project",
+      "isComplete": true,
+      "img": "url",
+      "id": 38
+    },
+    {
+      "stepId": 27,
+      "name": "Gather materials",
+      "description": "Materials",
+      "isComplete": true,
+      "img": "url",
+      "id": 39
+    },
+    {
+      "stepId": 30,
+      "name": "something",
+      "description": "Description",
+      "isComplete": false,
+      "img": "url",
+      "id": 40
     }
   ],
   "collaborations": [

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import StepManager from "../../modules/StepManager";
 import TaskManager from "../../modules/TaskManager";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  TextField,
+  Button
+} from "@material-ui/core";
 
 const TaskEditForm = props => {
   const [task, setTask] = useState({ name: "", description: "" });
@@ -25,13 +32,13 @@ const TaskEditForm = props => {
       isComplete: task.isComplete,
       img: task.img
     };
-    
+
     TaskManager.update(editedTask).then(() =>
       StepManager.getWithTasks(task.stepId).then(data =>
         props.updateTasks(data.tasks)
       )
     );
-    props.editStop()
+    props.editStop();
   };
 
   useEffect(() => {
@@ -43,38 +50,39 @@ const TaskEditForm = props => {
 
   return (
     <>
-      <form>
-        <fieldset>
-          <label htmlFor="name">Task Name</label>
-          <input
-            type="text"
+      <Card>
+        <CardContent>
+          <TextField
             required
-            className="taskEditForm"
-            onChange={handleFieldChange}
             id="name"
+            label="Task Name"
+            variant="outlined"
             value={task.name}
-          />
-          <label htmlFor="description">Task Description</label>
-          <input
-            type="text"
-            required
-            className="taskEditForm"
             onChange={handleFieldChange}
-            id="description"
-            value={task.description}
           />
-          <div className="button">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick={updateExistingTask}
-              className="btn"
-            >
-              Submit
-            </button>
-          </div>
-        </fieldset>
-      </form>
+          <TextField
+            required
+            id="description"
+            label="Task Description"
+            multiline
+            rows="4"
+            variant="outlined"
+            value={task.description}
+            onChange={handleFieldChange}
+          />
+        </CardContent>
+        <CardActions className="button">
+          <Button
+            type="button"
+            variant="contained"
+            disabled={isLoading}
+            onClick={updateExistingTask}
+            className="btn"
+          >
+            Submit
+          </Button>
+        </CardActions>
+      </Card>
     </>
   );
 };

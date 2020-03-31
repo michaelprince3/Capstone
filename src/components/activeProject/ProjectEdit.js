@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProjectManager from "../../modules/ProjectManager";
+import { TextField, Card, Button, CardContent, CardActions } from "@material-ui/core";
 
 const ProjectEdit = props => {
   const [project, setProject] = useState({ name: "", description: "" });
@@ -33,47 +34,49 @@ const ProjectEdit = props => {
   };
 
   useEffect(() => {
-      ProjectManager.get(props.match.params.projectId)
-      .then(project => {
-          setProject(project)
-          setIsLoading(false)
-      })
-  }, [])
+    ProjectManager.get(props.match.params.projectId).then(project => {
+      setProject(project);
+      setIsLoading(false);
+    });
+  }, []);
 
   return (
-      <>
-      <form>
-          <fieldset>
-              <label htmlFor="name">Project Name</label>
-              <input
-              type="text"
-              required
-              className="projectEditForm"
-              onChange={handleFieldChange}
-              id="name"
-              value={project.name}
-              />
-              <label htmlFor="description">Project Description</label>
-              <input
-              type="text"
-              required
-              className="projectEditForm"
-              onChange={handleFieldChange}
-              id="description"
-              value={project.description}
-              />
-              <div className="button">
-                  <button
-                  type="button"
-                  disabled={isLoading}
-                  onClick={updateExistingProject}
-                  className="btn"
-                  >Submit</button>
-              </div>
-          </fieldset>
-      </form>
-      </>
-  )
+    <>
+      <Card>
+        <CardContent>
+          <TextField
+            required
+            id="name"
+            label="Project Name"
+            variant="outlined"
+            value={project.name}
+            onChange={handleFieldChange}
+          />
+          <TextField
+            required
+            id="description"
+            label="Project Description"
+            multiline
+            rows="4"
+            variant="outlined"
+            value={project.description}
+            onChange={handleFieldChange}
+          />
+        </CardContent>
+        <CardActions className="button">
+          <Button
+            type="button"
+            variant="contained"
+            disabled={isLoading}
+            onClick={updateExistingProject}
+            className="btn"
+          >
+            Submit
+          </Button>
+        </CardActions>
+      </Card>
+    </>
+  );
 };
 
-export default ProjectEdit
+export default ProjectEdit;
