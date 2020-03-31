@@ -11,3 +11,7 @@
 .card {
     margin: 1em;
 }
+
+.addBtn {
+    margin-left: 1em !important;
+}

@@ -48,7 +48,7 @@ const ProjectList = props => {
     <>
     
       {isNew ? (
-        <div>
+        <div className="cardContainer">
           <ProjectForm
             openCard={openCard}
             toggleNew={toggleNew}

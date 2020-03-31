@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import StepManager from "../../modules/StepManager";
+import { Card, CardActions, CardContent, Typography, Button, TextField } from "@material-ui/core";
 
 const StepNewForm = props => {
   const projectId = props.projectId
@@ -30,7 +31,35 @@ const StepNewForm = props => {
 
   return (
     <>
-      <form>
+    <Card>
+      <CardContent>
+        <Typography variant="h5" id="title">Add a new Step</Typography>
+        <TextField
+        required
+        id="name"
+        label="Step Name"
+        variant="outlined"
+        onChange={handleFieldChange}
+        />
+        <TextField
+        required
+        id="description"
+        label="Step Description"
+        multiline
+        rows="4"
+        variant="outlined"
+        onChange={handleFieldChange}
+        />
+      </CardContent>
+      <CardActions>
+        <Button
+        type="button"
+        disabled={isLoading}
+        onClick={constructNewStep}
+        >Submit</Button>
+      </CardActions>
+    </Card>
+      {/* <form>
         <fieldset>
           <div className="stepForm">
             <label htmlFor="name">Step Name: </label>
@@ -60,7 +89,7 @@ const StepNewForm = props => {
             </button>
           </div>
         </fieldset>
-      </form>
+      </form> */}
     </>
   );
 };

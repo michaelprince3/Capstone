@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TaskManager from "../../modules/TaskManager";
 import StepManager from "../../modules/StepManager";
+import { Card, CardContent, CardActions, TextField, Button, Typography } from "@material-ui/core";
 
 const TaskNewForm = props => {
   const projectId = props.projectId;
@@ -39,7 +40,35 @@ const TaskNewForm = props => {
 
   return (
     <>
-      <form>
+    <Card>
+      <CardContent>
+        <Typography variant="h5" id="title">Add a new Task</Typography>
+        <TextField
+        required
+        id="name"
+        label="Task Name"
+        variant="outlined"
+        onChange={handleFieldChange}
+        />
+        <TextField
+        required
+        id="description"
+        label="Task Description"
+        multiline
+        rows="4"
+        variant="outlined"
+        onChange={handleFieldChange}
+        />
+      </CardContent>
+      <CardActions>
+        <Button
+        type="button"
+        disabled={isLoading}
+        onClick={constructNewTask}
+        >Submit</Button>
+      </CardActions>
+    </Card>
+      {/* <form>
         <fieldset>
           <div className="taskForm">
             <label htmlFor="name">Task Name: </label>
@@ -69,7 +98,7 @@ const TaskNewForm = props => {
             </button>
           </div>
         </fieldset>
-      </form>
+      </form> */}
     </>
   );
 };

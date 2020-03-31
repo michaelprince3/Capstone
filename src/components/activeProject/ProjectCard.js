@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -20,7 +20,7 @@ const ProjectCard = props => {
 
   return (
     <>
-      <Card boxShadow={5} className="projectCard">
+      <Card  className="projectCard">
         <CardContent
           className="projectCardContent"
           onClick={() => props.openCard(projectId)}
@@ -29,7 +29,7 @@ const ProjectCard = props => {
             <span className="projectCardTitle">{props.project.name}</span>
           </Typography>
           <p>{props.project.description}</p>
-          <p>A pretty image</p>
+          {/* <p>A pretty image</p> */}
         </CardContent>
         {props.project.isActive === false && (
           <CardActions className="btn">
@@ -45,7 +45,7 @@ const ProjectCard = props => {
       </Card>
     </>
   );
-  //   } else {return(null)}
+ 
 };
 
 export default ProjectCard;

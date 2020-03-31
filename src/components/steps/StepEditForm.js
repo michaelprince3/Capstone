@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import StepManager from "../../modules/StepManager";
 import ProjectManager from "../../modules/ProjectManager";
-
+import {
+  Card,
+  CardActions,
+  CardContent,
+  TextField,
+  Button
+} from "@material-ui/core";
 
 const StepEditForm = props => {
   const [step, setStep] = useState({ name: "", description: "" });
   const [isLoading, setIsLoading] = useState(false);
-  const stepId = props.stepId
+  const stepId = props.stepId;
 
   const handleFieldChange = evt => {
     const stateToChange = { ...step };
@@ -35,47 +41,49 @@ const StepEditForm = props => {
   };
 
   useEffect(() => {
-      StepManager.get(stepId)
-      .then(data => {
-          setStep(data)
-          setIsLoading(false)
-      })
-  }, [])
+    StepManager.get(stepId).then(data => {
+      setStep(data);
+      setIsLoading(false);
+    });
+  }, []);
 
   return (
-      <>
-      <form>
-          <fieldset>
-              <label htmlFor="name">Step Name</label>
-              <input
-              type="text"
-              required
-              className="stepEditForm"
-              onChange={handleFieldChange}
-              id="name"
-              value={step.name}
-              />
-              <label htmlFor="description">Step Description</label>
-              <input
-              type="text"
-              required
-              className="stepEditForm"
-              onChange={handleFieldChange}
-              id="description"
-              value={step.description}
-              />
-              <div className="button">
-                  <button
-                  type="button"
-                  disabled={isLoading}
-                  onClick={updateExistingStep}
-                  className="btn"
-                  >Submit</button>
-              </div>
-          </fieldset>
-      </form>
-      </>
-  )
+    <>
+      <Card>
+        <CardContent>
+          <TextField
+            required
+            id="name"
+            label="Step Name"
+            variant="outlined"
+            value={step.name}
+            onChange={handleFieldChange}
+          />
+          <TextField
+            required
+            id="description"
+            label="Step Description"
+            multiline
+            rows="4"
+            variant="outlined"
+            value={step.description}
+            onChange={handleFieldChange}
+          />
+        </CardContent>
+        <CardActions className="button">
+          <Button
+            type="button"
+            variant="contained"
+            disabled={isLoading}
+            onClick={updateExistingStep}
+            className="btn"
+          >
+            Submit
+          </Button>
+        </CardActions>
+      </Card>
+    </>
+  );
 };
 
-export default StepEditForm
+export default StepEditForm;

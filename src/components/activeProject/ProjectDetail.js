@@ -100,8 +100,8 @@ const ProjectDetail = props => {
   };
   //deletes a project
   const deleteProject = id => {
-    ProjectManager.delete(id).then(() => props.history.push("/active"))
-    handleConfirmClose()
+    ProjectManager.delete(id).then(() => props.history.push("/active"));
+    handleConfirmClose();
   };
   //deletes a step
   const deleteStep = id => {
@@ -182,16 +182,20 @@ const ProjectDetail = props => {
                   </DialogTitle>
                   <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                      This will delete the entire project. All Steps and tasks 
-                      related to this project will be lost.
-                      Are you sure you want to continue?
+                      This will delete the entire project. All Steps and tasks
+                      related to this project will be lost. Are you sure you
+                      want to continue?
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={handleConfirmClose} color="primary">
                       Disagree
                     </Button>
-                    <Button onClick={() => deleteProject(projectId)} color="primary" autoFocus>
+                    <Button
+                      onClick={() => deleteProject(projectId)}
+                      color="primary"
+                      autoFocus
+                    >
                       Agree
                     </Button>
                   </DialogActions>
@@ -242,7 +246,7 @@ const ProjectDetail = props => {
               <Button
                 variant="contained"
                 type="button"
-                className="btn"
+                className="addBtn"
                 onClick={newStep}
               >
                 Add
@@ -263,7 +267,12 @@ const ProjectDetail = props => {
                   {...props}
                 />
               ))}
-              <Button variant="contained" type="button" onClick={newTask}>
+              <Button
+                variant="contained"
+                type="button"
+                className="addBtn"
+                onClick={newTask}
+              >
                 Add
               </Button>
             </div>
